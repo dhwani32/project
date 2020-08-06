@@ -1329,12 +1329,69 @@
 
 
 
+   		public function searchUserByNameAjax($userName){
+
+   			if($userName == "" || $userName == " "){
+   				$userDetails = $this->db->query('SELECT * FROM `userdetails`')->result_array();
+   			}else{
+   				$userDetails = $this->db->query('SELECT * FROM `userdetails` WHERE UserName LIKE \'%'.$userName.'%\'')->result_array();
+   			}
+
+
+   			foreach ($userDetails as $user) {
+   				echo '<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12"><div class="card card-figure"><figure class="figure"><div class="figure-img"><img width="100%" height="150" class="img-fluid" src="'.base_url('assets/assets_user_images').'/'.$user['UserImage'].'" alt="Card image cap"><div class="figure-description"><h4 class="figure-title">'.$user['UserName'].'</h4><p> '.$user['JoinDate'].'</p><p> '.$user['UserPhone'].' </p></div><div class="figure-tools"><a href="#" class="tile tile-circle tile-sm mr-auto"><span class="oi oi-data-transfer-download"></span></a></div><div class="figure-action"><a href="'.base_url('admin/manageUserDetails').'/'.$user['UserId'].'" class="btn btn-block btn-sm btn-primary">Profile</a></div></div><figcaption class="figure-caption"><ul class="list-inline d-flex text-muted mb-0"><li class="list-inline-item mr-auto"><span class="oi oi-paperclip">'.$user['UserName'].'</span></li><li class="list-inline-item"><span class="oi oi-calendar">'.$user['UserGender'].'</span></li></ul></figcaption></figure></div></div>';
+   			}
+
+   		}
+
+
+   		public function searchBusinessByNameAjax($businessName){
 
 
 
+   			if($businessName == '' || $businessName== ' ' || $businessName== '  ' || $businessName == null){
+   				$business = $this->db->query('SELECT * FROM `businessdetails`')->result_array();
+   			}else{
+   			   	$business = $this->db->query('SELECT * FROM `businessdetails` WHERE CompanyName LIKE \'%'.$businessName.'%\'')->result_array();
+   			}
+
+
+   			foreach($business as $user){
+                        
+               	$Location = $this->MLocation->getLocation($user['AreaId']);
+                
+                $Category = $this->MCategory->getCategoryForAdmin($user['CategoryId']);
+                    
+                $Offers = $this->MOffers->getOfferesOfBusinessOffers($user['BusinessId']);
+				
+				$totalReview = 0;
+                foreach ($Offers as $o) {
+                    $review = $this->MReview->getAllReviewForBusiness($o['OfferId']);
+                    $totalReview = $totalReview + $review;
+                }
+                        
 
 
 
+                echo '<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"><div class="card"><div class="card-body"><div class="row align-items-center"><div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12"><div class="user-avatar float-xl-left pr-4 float-none"><img width="120" height="120" src="'.base_url('assets/assets_business_images').'/'.$user['BusinessImage'].'" alt="User Avatar" class="rounded-circle"></div><div class="pl-xl-3"><div class="m-b-0"><div class="user-avatar-name d-inline-block"><a href="'.base_url("admin/getOffersOfBusiness").'/'.$user['BusinessId'].'"><h2 class="font-24 m-b-10">'.$user['CompanyName'].'</h2></a></div><div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0"><p class="d-inline-block text-dark">'.$totalReview.' Reviews </p></div></div><div class="user-avatar-address"><p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>'.$Location['AreaDetails'][0]['AreaName'].', '.$Location['CityDetails'][0]['CityName'].', '.$Location['StateDetails'][0]['StateName'].', '.$Location['CountryDetails'][0]['CountryName'].'</p><div class="mt-3"><a href="" class="mr-1 badge badge-light">'.$Category[0]['CategoryName'].'</a></div></div></div></div><div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12"><div class="float-xl-right float-none mt-xl-0 mt-4"><a id="'.$user['BusinessId'].'" href="" data-target="#SendMsgToBusiness" data-toggle="modal" class="btn btn-secondary btnSendMsg">Send Messages</a></div></div></div></div></div></div>';
+   			}
+
+   		}
+
+
+   		public function activateBusiness($businessId){
+   			$updateState['activeStatus'] = 1;
+
+   			$this->db->where(array('businessId' => $businessId))->update('businessdetails', $updateState);
+   			redirect(base_url('admin/getOffersOfBusiness').'/'.$businessId);
+  		}
+
+  		public function deactivateBusiness($businessId){
+   			$updateState['activeStatus'] = 0;
+
+   			$this->db->where(array('businessId' => $businessId))->update('businessdetails', $updateState);
+   			redirect(base_url('admin/getOffersOfBusiness/').'/'.$businessId);
+  		}	
 
 
 	}

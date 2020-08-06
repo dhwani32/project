@@ -79,12 +79,25 @@
                         $totalReview = 0;
                         foreach ($offers as $o) {
                             $data = $this->MReview->getAllReviewForBusiness($o['OfferId']);
-                            $totalReview = $totalReview + $data;
+                            $thisotalReview = $totalReview + $data;
                         }
 
 
                         ?>
 
+                    <!-- <div class="row"> 
+                        <div class="col-12 pb-2 ">
+                            <?php if($businessDetails['activeStatus'] == true){ ?>
+                                <a href="<?=base_url('admin/deactivateBusiness').'/'.$businessDetails['BusinessId']?>">
+                                    <div class="col-3 btn btn-danger"> deactive business </div>
+                                </a>
+                            <?php }else if($businessDetails['activeStatus'] == false){ ?>
+                                <a href="<?=base_url('admin/activateBusiness').'/'.$businessDetails['BusinessId']?>">
+                                    <div class="col-3 btn btn-dark"> activate business </div>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </div> -->
                    <div class="row">
                         <!-- ============================================================== -->
                         <!-- profile -->
@@ -150,9 +163,13 @@
                                     <h3 class="font-16">Bank Info</h3>
                                     <div class="rating-star"> <b>
                                         <p class="d-inline-block text-dark">Bank Name : <?=$businessDetails['BusinessBankName']?></p>
+                                        <br>
                                         <p class="d-inline-block text-dark">Bank Account No : <?=$businessDetails['BusinessBankAccNo']?></p>
+                                        <br>
                                         <p class="d-inline-block text-dark">Bank IFSC Code : <?=$businessDetails['BusinessBankIFSC']?></p>
+                                        <br>
                                         <p class="d-inline-block text-dark">Bank Branch Name : <?=$businessDetails['BusinessBankBranch']?></p>
+                                        <br>
                                         <p class="d-inline-block text-dark">Pan No : <?=$businessDetails['BusinessPanNo']?></p>
                                     </b>
                                     </div>

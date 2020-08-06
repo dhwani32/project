@@ -58,13 +58,19 @@
 
                 
                 <div class="row">
-                    <div class="col-12">
-                        <div class="col-4 card bg-dark">
+                    <div class="col-4">
+                        <div class="col-12 card bg-dark">
                             <h1 align="center" class="text text-muted"> Total Business  </h1>
                             <h2 align="center" class="text text-white"><?=$totalBusiness?></h2>
                         </div>
                     </div>
 
+                    <div class="col-5 pt-4 mb-3">
+                        <input style="width:100%;" type="text" placeholder="searchBusinessByName" name="searchBusinessByName" id="searchBusinessByName" class="searchBusinessByName"> 
+                    </div>                  
+
+                    <div class="col-md-12 col-xl-12 col-md-12">
+                        <div class="searchedAreaBusiness row">
                     <?php 
                     foreach($business as $user){
                         
@@ -137,6 +143,8 @@
 
 
                     <?php } ?>
+                        </div>
+                    </div>
                 </div>
  
                 
@@ -226,4 +234,19 @@
         $('.modal .modal-body #BusinessId').val(BusinessId);
     });
 
+</script>
+
+
+<script type="text/javascript">
+    $('#searchBusinessByName').on('keyup',function(){
+        businessName = $(this).val();
+        $.ajax({
+            url:'<?=base_url('admin/searchBusinessByNameAjax/')?>'+businessName,
+            success:function(result){
+                // alert(result);
+                $('.searchedAreaBusiness').html(result);
+            }
+        });
+
+    });
 </script>

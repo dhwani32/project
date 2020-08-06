@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2020 at 11:23 PM
+-- Generation Time: Aug 06, 2020 at 11:53 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -219,7 +219,8 @@ CREATE TABLE `businessdetails` (
   `BusinessBankIFSC` varchar(15) DEFAULT NULL,
   `BusinessPanNo` varchar(20) DEFAULT NULL,
   `BusinessBankBranch` varchar(50) DEFAULT NULL,
-  `BusinessWallate` varchar(10) NOT NULL DEFAULT '0'
+  `BusinessWallate` varchar(10) NOT NULL DEFAULT '0',
+  `activeStatus` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -811,26 +812,26 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`UserId`, `UserName`, `UserEmail`, `UserPhone`, `JoinDate`, `UserAddress`, `ReferalCode`, `AreaId`, `Pincode`, `UserGender`, `UserImage`, `UserPassword`, `ReferalPoints`, `UserType`, `UserAllow`) VALUES
-(1, 'Hardik', 'hardik@gmail.com', '1234567890', '2020-06-16', '', 'v$Y3&FqmxWEc', 1, 0, 'male', 'defaultforMen.png', '0a169b8cf2abca3e6749f8e872bfde3b', '0', 0, 1),
-(2, 'Dixita', 'dixita@gmail.com', '1234567890', '2020-06-16', '', 'zY2UFDYX%_hK', 4, 0, 'female', 'defaultforWomen.png', '2f07e18321b39f3660fa03ccde23d1d1', '0', 0, 1),
+(1, 'Hardik', 'hardik.r2000@gmail.com', '9054928611', '2020-06-16', '', 'v$Y3&FqmxWEc', 1, 0, 'male', 'defaultforMen.png', '0a169b8cf2abca3e6749f8e872bfde3b', '0', 0, 1),
+(2, 'Dixita', 'dixitapatel1128@gmail.com', '6353870772', '2020-06-16', '', 'zY2UFDYX%_hK', 4, 0, 'female', 'defaultforWomen.png', '2f07e18321b39f3660fa03ccde23d1d1', '0', 0, 1),
 (3, 'Mitul', 'mr.vaghasiya197@gmail.com', '6353824140', '2020-06-16', '', 'G_kL1&)jLWHw', 75, 0, 'male', 'defaultforMen.png', '8287dbc30dd558f1f2d103fe507602bd', '0', 0, 1),
-(4, 'Vivek', 'vivek@gmail.com', '1234567890', '2020-06-16', '', '3L+nNh)CDO^z', 43, 0, 'male', 'defaultforMen.png', 'ff30ae718005ca6ac31617a4684ced8c', '0', 0, 1),
-(6, 'dhwani', 'dhwani@gmail.com', '1234567890', '2020-06-16', '', '5bTviKKy2Xf-', 71, 0, 'female', 'defaultforWomen.png', '22662445741a491d4551b9a9c159c9bd', '0', 0, 1),
-(8, 'william', 'william@gmail.com', '1234567890', '2020-06-16', '', '4pJZPubjgYkg', 43, 0, 'male', 'defaultforMen.png', '48b67e06bd44bb96a0248a1fb88b0458', '0', 0, 1),
-(9, 'liam', 'liam@gmail.com', '1234567890', '2020-04-06', '', '|[K*8m%Wxc|6', 42, 0, 'male', 'defaultforMen.png', 'dfc2875648fc808e0a369a22d3f9db78', '0', 0, 1),
-(10, 'justin', 'justin@gmail.com', '1234567890', '2020-04-06', '', 'eQCXp+cJpS2T', 44, 0, 'male', 'defaultforMen.png', '0789df8cb334cc9b2e401e8903b8fba0', '0', 0, 1),
-(11, 'laukhik', 'laukhik@gmail.com', '1234567890', '2020-04-06', '', 'qS%d^[yC{FLU', 1, 0, 'male', 'defaultforMen.png', '0c10561eef5cc61503355d0409773111', '0', 0, 1),
-(12, 'dharmik', 'dharmik@gmail.com', '1234567890', '2020-04-06', '', 'XMzEWjKgc^2R', 4, 0, 'male', 'defaultforMen.png', '886fa5bcce63df15598f0e8c20e2dc06', '0', 0, 1),
-(13, 'yuito', 'yuito@gmail.com', '1234567890', '2020-04-06', '', 'dc_h{kaU8CbE', 74, 0, 'male', 'defaultforMen.png', 'bc73999a087e6e24bf4b64dbd8139758', '0', 0, 1),
-(14, 'hinata', 'hinata@gmail.com', '1234567890', '2020-04-06', '', 'YLv{i7dxh[I|', 73, 0, 'male', 'defaultforMen.png', '67350058da9fa17b3e76f99817b6b63e', '0', 0, 1),
-(15, 'minato', 'minato@gmail.com', '1234567890', '2020-04-06', '', 'Bmb(0Q_|tO9(', 74, 0, 'male', 'defaultforMen.png', '7c4d6a23a7b06603caf6a953c2da1683', '0', 0, 1),
-(16, 'george', 'george@gmail.com', '1234567890', '2020-04-07', '', 'dvA5hPG&RPuY', 71, 0, 'male', 'defaultforMen.png', 'a2942e7a93e512263ed19aeafd4281ed', '0', 0, 1),
-(17, 'ethan', 'ethan@gmail.com', '1234567890', '2020-04-07', '', '*-TlwMJy}Gki', 71, 0, 'male', 'defaultforMen.png', 'bc9018a258f1d8e0a938658b34e043d7', '0', 0, 1),
-(18, 'khushal', 'khushal@gmail.com', '1234567890', '2020-06-17', '', 'KpB|FEj23[5)', 65, 0, 'male', 'defaultforMen.png', '8f9fa57e711dac6236b5acd3a3cb02fb', '0', 0, 1),
-(19, 'nilam', 'nilam@gmail.com', '1234567890', '2020-06-17', '', '{aRJnWn^evwp', 29, 0, 'female', 'defaultforWomen.png', 'f2d7c3d436ca78f9020e00cddaab8806', '0', 0, 1),
-(20, 'akta', 'akta@gmail.com', '1234567890', '2020-06-18', '', 'VCG|t*jW6vx+', 1, 0, 'female', 'defaultforWomen.png', 'fe46d38dd0c45843b97ae9951c9b0ba1', '0', 0, 1),
-(21, 'ekta', 'ekta@gmail.com', '1234567890', '2020-06-18', '', 'zgBW5G(LUHem', 1, 0, 'female', 'defaultforWomen.png', 'fe46d38dd0c45843b97ae9951c9b0ba1', '0', 0, 1),
-(23, 'Abhay', 'abhay@gmail.com', '1234567890', '2020-06-18', '', '2kR^1%6TS9MI', 1, 0, 'male', 'defaultforMen.png', '6d8255f20ec665fdad68889b321535e4', '0', 0, 1);
+(4, 'Vivek', 'ravalbheem1999@gmail.com', '9054928611', '2020-06-16', '', '3L+nNh)CDO^z', 43, 0, 'male', 'defaultforMen.png', 'ff30ae718005ca6ac31617a4684ced8c', '0', 0, 1),
+(6, 'dhwani', 'dhwanishiroya32@gmail.com', '9664955248', '2020-06-16', '', '5bTviKKy2Xf-', 71, 0, 'female', 'defaultforWomen.png', '22662445741a491d4551b9a9c159c9bd', '0', 0, 1),
+(8, 'william', 'kaushiksuhagiya11@gmail.com', '9106852781', '2020-06-16', '', '4pJZPubjgYkg', 43, 0, 'male', 'defaultforMen.png', '48b67e06bd44bb96a0248a1fb88b0458', '0', 0, 1),
+(9, 'liam', 'jakjilsutariya10179@gmail.com', '8849352556', '2020-04-06', '', '|[K*8m%Wxc|6', 42, 0, 'male', 'defaultforMen.png', 'dfc2875648fc808e0a369a22d3f9db78', '0', 0, 1),
+(10, 'justin', 'vaibhavtalaviya123@gmail.com', '7434935733', '2020-04-06', '', 'eQCXp+cJpS2T', 44, 0, 'male', 'defaultforMen.png', '0789df8cb334cc9b2e401e8903b8fba0', '0', 0, 1),
+(11, 'laukhik', 'laukhikpatidar2000@gmail.com', '9157989164', '2020-04-06', '', 'qS%d^[yC{FLU', 1, 0, 'male', 'defaultforMen.png', '0c10561eef5cc61503355d0409773111', '0', 0, 1),
+(12, 'dharmik', 'dharmikkalsariya28@gmail.com', '9737510271', '2020-04-06', '', 'XMzEWjKgc^2R', 4, 0, 'male', 'defaultforMen.png', '886fa5bcce63df15598f0e8c20e2dc06', '0', 0, 1),
+(13, 'yuito', 'naitikghaskata786@gmail.com', '8487978467', '2020-04-06', '', 'dc_h{kaU8CbE', 74, 0, 'male', 'defaultforMen.png', 'bc73999a087e6e24bf4b64dbd8139758', '0', 0, 1),
+(14, 'hinata', 'parthvora1860@gmail.com', '8488070052', '2020-04-06', '', 'YLv{i7dxh[I|', 73, 0, 'male', 'defaultforMen.png', '67350058da9fa17b3e76f99817b6b63e', '0', 0, 1),
+(15, 'minato', 'shyamsatasiya27@gmail.com', '8238328930', '2020-04-06', '', 'Bmb(0Q_|tO9(', 74, 0, 'male', 'defaultforMen.png', '7c4d6a23a7b06603caf6a953c2da1683', '0', 0, 1),
+(16, 'george', 'st050647@gmail.com', '9638288636', '2020-04-07', '', 'dvA5hPG&RPuY', 71, 0, 'male', 'defaultforMen.png', 'a2942e7a93e512263ed19aeafd4281ed', '0', 0, 1),
+(17, 'ethan', 'yashpte123@gmail.com', '9879413664', '2020-04-07', '', '*-TlwMJy}Gki', 71, 0, 'male', 'defaultforMen.png', 'bc9018a258f1d8e0a938658b34e043d7', '0', 0, 1),
+(18, 'khushal', 'guddidangariya1128@gmail.com', '6353874772', '2020-06-17', '', 'KpB|FEj23[5)', 65, 0, 'male', 'defaultforMen.png', '8f9fa57e711dac6236b5acd3a3cb02fb', '0', 0, 1),
+(19, 'nilam', 'guddidangariya@gmail.com', '6353870772', '2020-06-17', '', '{aRJnWn^evwp', 29, 0, 'female', 'defaultforWomen.png', 'f2d7c3d436ca78f9020e00cddaab8806', '0', 0, 1),
+(20, 'akta', 'akta@gmail.com', '6353870772', '2020-06-18', '', 'VCG|t*jW6vx+', 1, 0, 'female', 'defaultforWomen.png', 'fe46d38dd0c45843b97ae9951c9b0ba1', '0', 0, 1),
+(21, 'ekta', 'ekta@gmail.com', '9638498986', '2020-06-18', '', 'zgBW5G(LUHem', 1, 0, 'female', 'defaultforWomen.png', 'fe46d38dd0c45843b97ae9951c9b0ba1', '0', 0, 1),
+(23, 'Abhay', 'AbhayHegde55105510@gmail.com', '9054928611', '2020-06-18', '', '2kR^1%6TS9MI', 1, 0, 'male', 'defaultforMen.png', '6d8255f20ec665fdad68889b321535e4', '0', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -846,6 +847,13 @@ CREATE TABLE `userinquiry` (
   `Subject` varchar(50) NOT NULL,
   `Message` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userinquiry`
+--
+
+INSERT INTO `userinquiry` (`UserInquiryId`, `FirstName`, `LastName`, `Email`, `Subject`, `Message`) VALUES
+(8, 'mitul', 'vaghasiya', 'mr.vaghasiya197@gmail.com', 'demo', 'demo msg.....');
 
 -- --------------------------------------------------------
 
@@ -864,6 +872,114 @@ CREATE TABLE `userlogreport` (
 -- Dumping data for table `userlogreport`
 --
 
+INSERT INTO `userlogreport` (`UserLogReportId`, `UserId`, `Action`, `UserActionDate`) VALUES
+(179, 24, 'User Register', '2020-06-16'),
+(180, 1, 'User Register', '2020-06-16'),
+(181, 1, 'User Login', '2020-06-16'),
+(182, 1, 'User Login', '2020-06-16'),
+(183, 1, 'User Logout', '2020-06-16'),
+(184, 2, 'User Register', '2020-06-16'),
+(185, 2, 'User Login', '2020-06-16'),
+(186, 2, 'User Logout', '2020-06-16'),
+(187, 3, 'User Register', '2020-06-16'),
+(188, 3, 'User Login', '2020-06-16'),
+(189, 3, 'User Logout', '2020-06-16'),
+(190, 4, 'User Register', '2020-06-16'),
+(191, 4, 'User Login', '2020-06-16'),
+(192, 4, 'User Logout', '2020-06-16'),
+(193, 5, 'User Register', '2020-06-16'),
+(194, 6, 'User Register', '2020-06-16'),
+(195, 6, 'User Login', '2020-06-16'),
+(196, 6, 'User Logout', '2020-06-16'),
+(197, 7, 'User Register', '2020-06-16'),
+(198, 8, 'User Register', '2020-06-16'),
+(199, 8, 'User Login', '2020-06-16'),
+(200, 8, 'User Logout', '2020-06-16'),
+(201, 1, 'User Login', '2020-06-16'),
+(202, 1, 'User Logout', '2020-06-16'),
+(203, 2, 'User Login', '2020-06-16'),
+(204, 2, 'User Logout', '2020-06-16'),
+(205, 3, 'User Login', '2020-06-16'),
+(206, 3, 'User Logout', '2020-06-16'),
+(207, 4, 'User Login', '2020-06-16'),
+(208, 4, 'User Logout', '2020-06-16'),
+(209, 6, 'User Login', '2020-06-16'),
+(210, 6, 'User Logout', '2020-06-16'),
+(211, 1, 'User Login', '2020-06-16'),
+(212, 1, 'User Logout', '2020-06-16'),
+(213, 2, 'User Login', '2020-06-16'),
+(214, 2, 'User Logout', '2020-06-16'),
+(215, 4, 'User Login', '2020-06-16'),
+(216, 4, 'User Logout', '2020-06-16'),
+(217, 3, 'User Login', '2020-06-16'),
+(218, 3, 'User Logout', '2020-06-16'),
+(219, 8, 'User Login', '2020-06-16'),
+(220, 2, 'User Login', '2020-06-17'),
+(221, 2, 'User Logout', '2020-06-17'),
+(222, 1, 'User Login', '2020-06-17'),
+(223, 1, 'Add offer in favorite list', '2020-06-17'),
+(224, 1, 'User Logout', '2020-06-17'),
+(225, 3, 'User Login', '2020-06-17'),
+(226, 3, 'User Logout', '2020-06-17'),
+(227, 4, 'User Login', '2020-06-17'),
+(228, 4, 'User Logout', '2020-06-17'),
+(229, 6, 'User Login', '2020-06-17'),
+(230, 6, 'User Logout', '2020-06-17'),
+(231, 18, 'User Register', '2020-06-17'),
+(232, 18, 'User Login', '2020-06-17'),
+(233, 18, 'Purchase Offer', '2020-06-17'),
+(234, 18, 'Purchase Offer', '2020-06-17'),
+(235, 19, 'User Register', '2020-06-17'),
+(236, 19, 'User Login', '2020-06-17'),
+(237, 19, 'Add offer in favorite list', '2020-06-17'),
+(238, 19, 'User Logout', '2020-06-17'),
+(239, 19, 'User Login', '2020-06-17'),
+(240, 19, 'User Login', '2020-06-18'),
+(241, 19, 'User Logout', '2020-06-18'),
+(242, 1, 'User Login', '2020-06-18'),
+(243, 1, 'User Logout', '2020-06-18'),
+(244, 1, 'User Login', '2020-06-18'),
+(245, 1, 'User Logout', '2020-06-18'),
+(246, 18, 'User Login', '2020-06-18'),
+(247, 18, 'User Logout', '2020-06-18'),
+(248, 6, 'User Login', '2020-06-18'),
+(249, 6, 'User Logout', '2020-06-18'),
+(250, 20, 'User Register', '2020-06-18'),
+(251, 21, 'User Register', '2020-06-18'),
+(252, 21, 'User Login', '2020-06-18'),
+(253, 21, 'Add offer in favorite list', '2020-06-18'),
+(254, 21, 'Purchase Offer', '2020-06-18'),
+(255, 21, 'User Logout', '2020-06-18'),
+(256, 6, 'User Login', '2020-06-18'),
+(257, 6, 'User Logout', '2020-06-18'),
+(258, 6, 'User Login', '2020-06-18'),
+(259, 3, 'User Login', '2020-06-18'),
+(260, 3, 'User Logout', '2020-06-18'),
+(261, 22, 'User Register', '2020-06-18'),
+(262, 22, 'User Login', '2020-06-18'),
+(263, 22, 'Add offer in favorite list', '2020-06-18'),
+(264, 22, 'User Logout', '2020-06-18'),
+(265, 1, 'User Login', '2020-06-18'),
+(266, 3, 'User Logout', '2020-06-18'),
+(267, 3, 'User Logout', '2020-06-18'),
+(268, 1, 'User Logout', '2020-06-18'),
+(269, 22, 'User Login', '2020-06-18'),
+(270, 22, 'User Logout', '2020-06-18'),
+(271, 22, 'User Login', '2020-06-18'),
+(272, 22, 'User Logout', '2020-06-18'),
+(273, 3, 'User Login', '2020-06-18'),
+(274, 3, 'User Logout', '2020-06-18'),
+(275, 1, 'User Login', '2020-06-18'),
+(276, 1, 'User Logout', '2020-06-18'),
+(277, 2, 'User Login', '2020-06-18'),
+(278, 2, 'User Logout', '2020-06-18'),
+(279, 6, 'User Login', '2020-06-18'),
+(280, 6, 'User Logout', '2020-06-18'),
+(281, 4, 'User Login', '2020-06-18'),
+(282, 4, 'User Logout', '2020-06-18'),
+(283, 23, 'User Register', '2020-06-18'),
+(284, 23, 'User Login', '2020-06-18'),
+(285, 3, 'User Login', '2020-08-06');
 
 -- --------------------------------------------------------
 
@@ -1242,13 +1358,13 @@ ALTER TABLE `userdetails`
 -- AUTO_INCREMENT for table `userinquiry`
 --
 ALTER TABLE `userinquiry`
-  MODIFY `UserInquiryId` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `UserInquiryId` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `userlogreport`
 --
 ALTER TABLE `userlogreport`
-  MODIFY `UserLogReportId` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=285;
+  MODIFY `UserLogReportId` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
