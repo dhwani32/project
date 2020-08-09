@@ -1348,6 +1348,35 @@ class User extends CI_Controller{
 	}
 
 
+	/// check for every words matching in the database and search...
+	public function voice_search_data($searchKey){
+		
+		$keywords = explode('%20',$searchKey);
+		
+		$searchKey2 = implode(' ', $keywords);
+		
+		$totalOffers = array();
+		foreach ($keywords as $search) {
+			$offers = $this->db->query('SELECT * FROM `offers` WHERE OfferName LIKE \'%'.$search.'%\' OR OfferDescription LIKE \'%'.$search.'%\'')->result_array();	
+			if(count($offers)>0){
+				foreach ($offers as $o) {
+					array_push($totalOffers, $o);								
+				}				
+			}
+		}
+		$data['searchKey'] = $searchKey2;
+		$data['offers'] = $totalOffers;
+
+		$this->load->view('user_view/user_voice_search', $data);
+
+	}
+
+
+	/// very simple search of all search keyword... 
+	public function voice_search_data2($search){
+		$offers = $this->db->query('SELECT * FROM `offers` WHERE OfferName LIKE \'%'.$search.'%\' OR OfferDescription LIKE \'%'.$search.'%\'')->result_array();	
+		
+	}
 
 
 

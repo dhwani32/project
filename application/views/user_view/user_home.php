@@ -141,6 +141,9 @@
           <h3> Every Offers You Can Check Of Your Area.</h3>
           <p> Explore some popular offers now. </p>
 
+          <input type="text" name="" class="voice_search_input" id="speechToText" placeholder="Tap and speek to search" onclick=record() >
+          <i style="font-size:24px" class="fa voice_search_icon">&#xf130;</i>
+            
           <br><br><br>
             <a href="#ExplorePopularOffers" class="btn btn-pink">&#x2B9F</a>
         </div>
@@ -638,12 +641,83 @@
   </script>
 
 
+
+
+
 </body>
 
 </html>
 
+<script> 
+  function record(){
+      var recognition = new webkitSpeechRecognition();
+      recognition.lang =  "en-GB";
+
+      recognition.onresult = function (event){
+          console.log(event);
+          var search = event.results[0][0].transcript;
+          document.getElementById('speechToText').value = search;
+          window.location = "<?=base_url('user/voice_search_data/')?>"+search;
+      }
+
+      recognition.start();
+  }
+</script> 
 
 
+<style>
+
+.voice_search_input{
+  border-radius: 20px;
+  font-size: 14px;
+  border: 2px solid #F38181;
+  padding:4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 20px;
+  transition: 0.2s;
+  display: none;
+}
+
+.voice_search_input:hover{
+  width: 200px;
+}
+
+.voice_search_icon{
+  color: #F38181;
+  border: 2px solid #F38181;
+  padding:4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+}
+
+
+</style>
+
+<script>
+  $('.voice_search_icon').mouseover(function(){
+    $('.voice_search_input').css({
+      'display': 'inline',
+    });
+    $('.voice_search_icon').css({
+      'display':'none',
+    });
+  });
+
+  $('.voice_search_input').mouseleave(function(){
+    $('.voice_search_input').css({
+      'display': 'none',
+    });
+
+    $('.voice_search_icon').css({
+      'display': 'inline',
+    });
+
+  });
+
+ 
+</script>
 
 
   <div class="googleTranslate" id="google_translate_element"></div>
